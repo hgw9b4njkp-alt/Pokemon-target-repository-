@@ -1,22 +1,21 @@
-name: Pokémon Target Monitor
+name: Pokemon Target Monitor
 
-on:
-workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
 monitor:
 runs-on: ubuntu-latest
-
 steps:
-  - name: Download repository
-    uses: actions/checkout@v4
+- name: Checkout repository
+uses: actions/checkout@v4
+
   - name: Set up Python
     uses: actions/setup-python@v5
     with:
       python-version: "3.12"
   - name: Install dependencies
     run: pip install -r requirements.txt
-  - name: Run bot
+  - name: Run Telegram test
     run: python main.py
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
